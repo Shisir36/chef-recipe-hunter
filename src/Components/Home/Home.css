@@ -1,0 +1,10 @@
+/* Hide scrollbar for Marquee component */
+::-webkit-scrollbar {
+    display: none;
+  }
+  @media only screen and (max-width: 640px) {
+    .marquee {
+      animation-duration: 20s; /* set a slower animation duration for mobile devices */
+    }
+  }
+  
