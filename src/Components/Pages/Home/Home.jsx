@@ -12,8 +12,8 @@ const Home = () => {
     .then(data => setChefData(data.japanese_chefs))
   },[])
     return (
-        <div>
-   <div className="hero h-96" style={{ backgroundImage: `url(${bannerImg})` }}>
+  <div>
+   <div className="hero h-96 " style={{ backgroundImage: `url(${bannerImg})` }}>
   <div className="hero-overlay bg-opacity-60"></div>
   <div className="hero-content text-center text-neutral-content">
     <div>
@@ -25,22 +25,24 @@ const Home = () => {
      <div className=' md:w-4/6 mx-auto'>
       <p className="mb-5">We provide the best culinary services in town. Our world-class chefs use only the freshest ingredients to create delicious and healthy meals that cater to all tastes and preferences.</p>
       </div>
-      <button className="btn btn-primary">Get Started</button>
+      <button className=" bg-green-600 hover:bg-indigo-700 btn border-0">Get Started</button>
     </div>
   </div>
 </div>
-  <div className='mt-10'>
+  <section className='mt-10 px-10'>
   <p className="text-center mb-5 md:text-5xl lg:text-6xl text-3xl font-semibold bg-gradient-to-r from-gray-400 to-black via-gray-500 text-transparent bg-clip-text title ">Our All Chefs</p>
 
 <hr />
+<div className=' grid md:grid-cols-2 gap-11'>
     {
       chefsData.map(chefData => <ChefDetails key={chefData.id} chefData = {chefData}></ChefDetails>)
     }
-  </div>
+    </div>
+  </section>
   <div className=" bg-gray-100 mt-16">
   <div className=" mx-auto">
     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-20">
-      <div className="md:w-1/2 md:ml-20 ml-3">
+      <div className="md:w-1/2 md:ml-20 ml-3 mt-3">
         <h2 className="text-3xl mb-4 title">About Us</h2>
         <p className="text-gray-600 mb-6">Our Chefs offer you perfect cooking, best served dishes with fresh ingredients and old recipes. We have only carefully sourced and seasonal ingredients in our disposal to make rustic dishes. We provide you with daily self-made bread, sourdough pizza, roasted fish-meat-vegetables and many more.</p>
        <button className=' p-4 border-black border-2'>Read More</button>
