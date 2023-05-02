@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaHeart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const ChefDetails = ({chefData}) => {
   const {chef_picture,chef_name, years_of_experience,number_of_recipes,likes,chef_bio} = chefData
@@ -16,7 +17,9 @@ const ChefDetails = ({chefData}) => {
       <p class="mt-2 text-gray-500 inline-flex items-center"><FaHeart className='text-red-600' /><span className=' font-bold'>  {likes}</span></p>
       <p class="mt-2 text-gray-500"></p>
       <div class="mt-6">
-        <a href="#" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-indigo-700">View Recipes</a>
+        <button>
+        <Link to={`/ChefRecipes/ ${chefData.id}`} class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-indigo-700">View Recipes</Link>
+        </button>
       </div>
     </div>
   </div>

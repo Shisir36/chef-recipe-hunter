@@ -9,7 +9,7 @@ const Home = () => {
   useEffect(()=>{
     fetch("http://localhost:5000/chef")
     .then(res => res.json())
-    .then(data => setChefData(data.japanese_chefs))
+    .then(data => setChefData(data))
   },[])
     return (
   <div>

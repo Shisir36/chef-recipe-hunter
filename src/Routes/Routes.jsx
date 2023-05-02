@@ -3,7 +3,7 @@ import Main from "../Layout/Main";
 import Home from "../Components/Pages/Home/Home";
 import Blog from "../Components/Pages/Blog/Blog";
 import Login from "../Components/Login";
-
+import ChefRecipes from "../Components/Pages/ChefRecipes/ChefRecipes";
 export const router = createBrowserRouter([
     {
       path:"/",
@@ -20,6 +20,12 @@ export const router = createBrowserRouter([
         {
             path: '/login',
             element: <Login/>
-        }]
+        },
+        {
+            path:"/ChefRecipes/:id",
+            element:<ChefRecipes/>,
+            loader:({params})=> fetch(`http://localhost:5000/recipes/${params.id}`)
+        }
+    ]
     }
 ])
