@@ -2,8 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../Components/Pages/Home/Home";
 import Blog from "../Components/Pages/Blog/Blog";
-import Login from "../Components/Login";
 import ChefRecipes from "../Components/Pages/ChefRecipes/ChefRecipes";
+import Login from "../Components/Login/Login";
 export const router = createBrowserRouter([
     {
       path:"/",
