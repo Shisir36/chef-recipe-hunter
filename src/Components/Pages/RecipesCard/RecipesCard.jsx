@@ -1,15 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import Rating from 'react-rating';
 import { toast, ToastContainer } from 'react-toastify';
 
 const RecipesCard = ({recipe}) => {
-    const notify = () => toast("Wow so easy!");
-    const {name,ingredients,method,recipe_picture,rating} = recipe
+    const [favorites, setFavorites] = useState([]);
+    const {name,ingredients,method,recipe_picture,rating,food_id} = recipe;
+
+  const addToFavorites = (id) => {
+    if (favorites.includes(id)) {
+      toast.error('Already added to favorites!');
+    } else {
+      setFavorites([...favorites, id]);
+      toast.success('Added to favorites!');
+    }
+  };
     return (
 <div className="card md:w-96 rounded-sm w-full bg-base-100 shadow-md mx-auto mb-8">
     <ToastContainer/>
-  <figure><img src={recipe_picture} alt="Shoes" /></figure>
+  <figure>
+    <img src={recipe_picture} alt="Shoes" /></figure>
   <div className="card-body">
     <h2 className="card-title">
       <div className="badge  bg-green-600 text-xl p-4">{name}</div>
@@ -38,7 +48,7 @@ const RecipesCard = ({recipe}) => {
       </div>
     </div>
   </div>
-  <button className='btn btn-outline btn-success rounded-sm' onClick={notify} disabled={toast.isActive('Added to Favourites!')} >Add To Favourite</button>
+  <button className='btn btn-outline btn-success rounded-sm' onClick={()=>{addToFavorites(food_id)}}  disabled={favorites.includes(food_id)} >Add To Favourite</button>
 </div>
 
     );

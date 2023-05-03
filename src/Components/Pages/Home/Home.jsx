@@ -44,7 +44,8 @@ const Home = () => {
     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-20">
       <div className="md:w-1/2 md:ml-20 ml-3 mt-3">
         <h2 className="text-3xl mb-4 title">About Us</h2>
-        <p className="text-gray-600 mb-6">Our Chefs offer you perfect cooking, best served dishes with fresh ingredients and old recipes. We have only carefully sourced and seasonal ingredients in our disposal to make rustic dishes. We provide you with daily self-made bread, sourdough pizza, roasted fish-meat-vegetables and many more.</p>
+        <p className="text-gray-600 mb-6">
+Our chefs offer you perfect Japanese cuisine, with expertly crafted dishes made from fresh and seasonal ingredients. We have only carefully sourced and authentic Japanese ingredients in our disposal to create a variety of dishes, from classic sushi to flavorful ramen bowls. We provide you with daily homemade miso soup, tempura vegetables, grilled seafood, and many more delicious dishes that will transport your taste buds to Japan.</p>
        <button className=' p-4 border-black border-2'>Read More</button>
       </div>
       <div className=" md:w-1/2 flex justify-end">

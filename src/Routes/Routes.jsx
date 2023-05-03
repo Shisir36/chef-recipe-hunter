@@ -5,10 +5,13 @@ import Blog from "../Components/Pages/Blog/Blog";
 import ChefRecipes from "../Components/Pages/ChefRecipes/ChefRecipes";
 import Login from "../Components/Login/Login";
 import Register from "../Components/Register/Register";
+import PrivateRoute from "../privateRoute/PrivateRoute";
+import Errorpage from "../Errorpage/Errorpage";
 export const router = createBrowserRouter([
     {
       path:"/",
       element:<Main/>,
+      errorElement:<Errorpage></Errorpage>,
       children:[
         {
             path:"/",
@@ -28,7 +31,7 @@ export const router = createBrowserRouter([
         },
         {
             path:"/ChefRecipes/:id",
-            element:<ChefRecipes/>,
+            element:<PrivateRoute><ChefRecipes></ChefRecipes></PrivateRoute>,
             loader:({params})=> fetch(`http://localhost:5000/recipes/${params.id}`)
         }
     ]

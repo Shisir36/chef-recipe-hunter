@@ -13,11 +13,11 @@ useEffect(()=>{
 },[]) 
 return (
  <div>
-     <div className="bg-cover bg-center h-4/6" style={{ backgroundImage: `url(${bgImage})`, opacity: 0.8 }}>
-      <div className="container mx-auto px-4 py-32 h-full text-black">
+     <div className="bg-cover bg-center md:h-3/6" style={{ backgroundImage: `url(${bgImage})`, opacity: 0.8 }}>
+      <div className="container mx-auto px-4 py-32 h-4/6 text-black">
         <div className="flex flex-col md:flex-row items-center justify-center h-full">
           <div className="md:w-1/4 mb-4 md:mb-0">
-            <img className="rounded-full h-72 w-72 border-4 border-white shadow-lg" src={chefData.chef_picture} alt="Chef image" />
+            <img className="rounded-full md:h-80 md:w-80 border-4 border-white shadow-lg" src={chefData.chef_picture} alt="Chef image" />
           </div>
           <div className="md:w-3/4 md:pl-10">
             <h1 className="text-5xl font-bold mb-5 text-white">{chefData.chef_name}</h1>

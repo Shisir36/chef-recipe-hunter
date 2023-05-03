@@ -1,17 +1,18 @@
 import React, { useContext, useState } from 'react';
-import { FaGit, FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import Lottie from "lottie-react";
 import login from '../../../public/login.json';
 
 const Login = () => {
-    const { signInWithGoogle } = useContext(AuthContext);
-    const {signIn} = useContext(AuthContext)
+    const location = useLocation()
+    const navigate = useNavigate();
+    const {signIn,signInWithGoogle} = useContext(AuthContext)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [rememberMe, setRememberMe] = useState(false);
-  
+    const from = location.state?.from?.pathname||"/";
     const handleSubmit = (event) => {
       event.preventDefault();
       const form = event.target;
@@ -20,13 +21,21 @@ const Login = () => {
       signIn(email,password)
       .then(result => {
         console.log(result.user);
+        navigate(from,{replace:true})
+        form.reset()
       })
       .catch(error => console.log(error))
     };
 
-
     const handleSignInWithGoogle = () => {
-      signInWithGoogle();
+        signInWithGoogle()
+        .then((result) => {
+            const user = result.user;
+            navigate(from,{replace:true})
+          })
+          .catch((error) => {
+            console.log(error);
+          });
     };
 
   return (

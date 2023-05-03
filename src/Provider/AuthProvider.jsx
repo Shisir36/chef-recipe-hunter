@@ -3,10 +3,12 @@ import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, updateProf
 import app from '../Firebase/Firebase.config';
 const auth = getAuth(app);
 export const AuthContext = createContext()
-const googleProvider = new GoogleAuthProvider();
+
 const AuthProvider = ({children}) => {
-   const [user , setUser] = useState(null);
+ const [user , setUser] = useState(null);
+ const [loading, setLoading] = useState(true)
 const createUser = (email,password) => {
+    setLoading(true)
     return createUserWithEmailAndPassword(auth , email , password)
 }
 const updateUserProfile = (name, photoURL) => {
@@ -20,41 +22,27 @@ const updateUserProfile = (name, photoURL) => {
   });
 }
 const signIn = (email, password) =>{
+    setLoading(true)
     return signInWithEmailAndPassword(auth, email, password)
 }
 const logout = () =>{
+    setLoading(true)
   return signOut(auth)
 }
 const googleProvider = new GoogleAuthProvider();
 const signInWithGoogle = () => {
-    signInWithPopup(auth, googleProvider)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // The signed-in user info.
-        const user = result.user;
-        setUser(user);
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
-      });
+    setLoading(true)
+   return signInWithPopup(auth, googleProvider)
   };
   
 
 useEffect(()=>{
- const unsubscribe =onAuthStateChanged(auth, loggedUser => {
+ const unsubscribe = onAuthStateChanged(auth, loggedUser => {
         setUser(loggedUser)
+         setLoading(false)
     })
     return () =>{
-        unsubscribe()
+      return  unsubscribe()
     }
 },[])
     const authinfo ={
@@ -63,7 +51,8 @@ useEffect(()=>{
          updateUserProfile,
          signIn,
          logout,
-         signInWithGoogle
+         signInWithGoogle,
+         loading
     }
 
     return (

@@ -7,10 +7,8 @@ import { AuthContext } from '../../Provider/AuthProvider';
 const Register = () => {
     const {user,createUser,updateUserProfile} = useContext(AuthContext)
     console.log(createUser);
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [photoURL, setPhotoURL] = useState('');
+  const [password, PasswordError] = useState('');
+  const [Error, setError] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -19,13 +17,25 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         const photoURL = form.photoURL.value;
+        if (password.length < 6) {
+            PasswordError('Password should be at least 6 characters long');
+            return;
+            
+          }
+          PasswordError('')
+        
+          if (!email || !password) {
+            setError('Please provide your email and password');
+            return;
+          }
         createUser(email,password)
         .then(result => {
             const loggedUser = result.user;
             console.log(loggedUser);
             updateUserProfile(name, photoURL)
+            form.reset()
         })
-        .catch(error => console.log(error))
+        .catch(error => setError(error))
       };      
   return (
 <div className="hero-overlay bg-opacity-60 h-full w-full bg-cover" style={{ backgroundImage: `url(${Photo})` }}>
@@ -42,13 +52,15 @@ const Register = () => {
           <input className="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700" type="email" id="email" v-model="email" required/>
         </div>
         <div className="mb-4">
-          <label className="block mb-2 font-bold text-gray-800" htmlFor="password">Password</label>
-          <input className="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700" type="password" id="password" v-model="password" required/>
+          <label className="block mb-2 font-bold text-gray-800" htmlFor="password" >Password</label>
+          <input className="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700" type="password" id="password" v-model="password"  required/>
         </div>
+        {password && <p className="mb-4 text-red-600">{password}</p>}
         <div className="mb-4">
           <label className="block mb-2 font-bold text-gray-800" htmlFor="photoURL">Photo URL</label>
           <input className="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700" type="url" id="photoURL" v-model="photoURL"/>
         </div>
+        {Error && <p className="mb-4 text-red-600">{Error}</p>}
         <div className="flex justify-end">
           <button className="px-4 py-4 w-full text-white bg-green-600 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700" type="submit">Sign Up</button>
         </div>
