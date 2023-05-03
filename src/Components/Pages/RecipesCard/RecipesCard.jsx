@@ -7,7 +7,7 @@ const RecipesCard = ({recipe}) => {
     const notify = () => toast("Wow so easy!");
     const {name,ingredients,method,recipe_picture,rating} = recipe
     return (
-<div className="card md:w-96 rounded-sm w-full bg-base-100 shadow-md mx-auto">
+<div className="card md:w-96 rounded-sm w-full bg-base-100 shadow-md mx-auto mb-8">
     <ToastContainer/>
   <figure><img src={recipe_picture} alt="Shoes" /></figure>
   <div className="card-body">

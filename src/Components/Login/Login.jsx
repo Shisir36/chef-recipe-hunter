@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { FaGit, FaGithub, FaGoogle } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const Login = () => {
+    const {signIn} = useContext(AuthContext)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [rememberMe, setRememberMe] = useState(false);
   
     const handleSubmit = (event) => {
       event.preventDefault();
-      console.log("Form submitted");
-      console.log("Email: ", email);
-      console.log("Password: ", password);
-      console.log("Remember me: ", rememberMe);
+      const form = event.target;
+      const email = form.email.value;
+      const password = form.password.value;
+      signIn(email,password)
+      .then(result => {
+        console.log(result.user);
+      })
+      .catch(error => console.log(error))
     };
 
   return (
@@ -21,14 +29,14 @@ const Login = () => {
         </h2>
         <p className="mt-2 text-center text-md text-gray-100">
           Or{" "}
-          <a href="#" className="text-white font-medium">
+          <Link to="/register" className="text-white font-medium">
             create a new account
-          </a>
+          </Link>
         </p>
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+        <div className="bg-gradient-to-r from-green-200 to-purple-400 bg-opacity-25 py-12 px-4 sm:px-6 lg:px-8">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label
@@ -44,7 +52,6 @@ const Login = () => {
                   type="email"
                   autoComplete="email"
                   required
-                  value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
@@ -65,7 +72,6 @@ const Login = () => {
                   type="password"
                   autoComplete="current-password"
                   required
-                  value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
@@ -77,7 +83,6 @@ const Login = () => {
                 id="remember_me"
                 name="remember_me"
                 type="checkbox"
-                checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
                 className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
               />
@@ -96,11 +101,20 @@ const Login = () => {
                 >
                 Sign in
                 </button>
+                <h2 className='text-center mt-5'>Sign in With</h2>
+                <div>
+                    <button className='bg-red-500 btn border-none flex hover:bg-red-600 items-center gap-2 mx-auto mt-3'>
+                    <FaGoogle></FaGoogle><span>Sign in with Google</span>
+                    </button>
+                    <button className='bg-black btn border-none flex items-center gap-2 mx-auto mt-3'>
+                    <FaGithub></FaGithub><span>Sign in with Github</span>
+                    </button>
+                </div>
                 </div>
                 </form>
                 </div>
                 </div>
-                </div>
+    </div>
     );
 };
 

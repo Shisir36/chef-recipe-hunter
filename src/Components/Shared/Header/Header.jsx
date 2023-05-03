@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../../Provider/AuthProvider';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+const {user} = useContext(AuthContext)
   const handleMenuClick = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -78,13 +79,7 @@ const Header = () => {
                 >
                   Blog
                 </NavLink>
-                <NavLink
-                  to="/login"
-                  activeClassName="bg-gray-900 text-white"
-                  className={({isActive})=> isActive ? "text-green-600 px-3 py-2 rounded-md "  : 'text-white px-3 py-2 rounded-md hover:bg-gray-700 '}
-                >
-                  Login
-                </NavLink>
+
               </div>
             </div>
           </div>
@@ -94,6 +89,13 @@ const Header = () => {
               alt="user"
               className="w-8 h-8 rounded-full"
               />
+                <NavLink
+                  to="/login"
+                  activeClassName="bg-gray-900 text-white"
+                  className={({isActive})=> isActive ? "text-green-600 px-3 py-2 rounded-md "  : 'text-white px-3 py-2 rounded-md hover:bg-gray-700 '}
+                >
+                  Login
+                </NavLink>
               </div>
               </div>
               </div>
