@@ -2,8 +2,11 @@ import React, { useContext, useState } from 'react';
 import { FaGit, FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import Lottie from "lottie-react";
+import login from '../../../public/login.json';
 
 const Login = () => {
+    const { signInWithGoogle } = useContext(AuthContext);
     const {signIn} = useContext(AuthContext)
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -21,8 +24,14 @@ const Login = () => {
       .catch(error => console.log(error))
     };
 
+
+    const handleSignInWithGoogle = () => {
+      signInWithGoogle();
+    };
+
   return (
-    <div className="min-h-screen bg-gradient-to-r from-indigo-400 to-purple-400 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-r from-indigo-400 to-purple-400 flex flex-col justify-center py-12 sm:px-6 lg:px-8 md:grid grid-cols-2 px-3 gap-3 items-center">
+  <div>
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
           Sign in to your account
@@ -103,7 +112,7 @@ const Login = () => {
                 </button>
                 <h2 className='text-center mt-5'>Sign in With</h2>
                 <div>
-                    <button className='bg-red-500 btn border-none flex hover:bg-red-600 items-center gap-2 mx-auto mt-3'>
+                    <button onClick={handleSignInWithGoogle} className='bg-red-500 btn border-none flex hover:bg-red-600 items-center gap-2 mx-auto mt-3'>
                     <FaGoogle></FaGoogle><span>Sign in with Google</span>
                     </button>
                     <button className='bg-black btn border-none flex items-center gap-2 mx-auto mt-3'>
@@ -113,8 +122,13 @@ const Login = () => {
                 </div>
                 </form>
                 </div>
-                </div>
+ </div>
+ </div>
+ <div className=' w-4/5'>
+ <Lottie  animationData={login} height={600} width={300} loop = {true}></Lottie>   
+</div>
     </div>
+
     );
 };
 
