@@ -8,7 +8,7 @@ import login from '../../../public/login.json';
 const Login = () => {
     const location = useLocation()
     const navigate = useNavigate();
-    const {signIn,signInWithGoogle} = useContext(AuthContext)
+    const {signIn,signInWithGoogle, signInWithGithub} = useContext(AuthContext)
     const [rememberMe, setRememberMe] = useState(false);
     const [error, setError] = useState(null);
     const from = location.state?.from?.pathname||"/";
@@ -36,6 +36,16 @@ const Login = () => {
             console.log(error);
           });
     };
+    const handleSignInWithGithub = () => {
+        signInWithGithub()
+        .then((result) => {
+            const user = result.user;
+            navigate(from,{replace:true})
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+    }
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-indigo-400 to-purple-400 flex flex-col justify-center py-12 sm:px-6 lg:px-8 md:grid grid-cols-2 px-3 gap-3 items-center">
@@ -122,7 +132,7 @@ const Login = () => {
                     <button onClick={handleSignInWithGoogle} className='bg-red-500 btn border-none flex hover:bg-red-600 items-center py-3 gap-2 mx-auto mt-3 w-full'>
                     <FaGoogle></FaGoogle><span>Sign in with Google</span>
                     </button>
-                    <button className='bg-black btn border-none py-3 flex items-center gap-2 mx-auto mt-3 w-full'>
+                    <button onClick={handleSignInWithGithub} className='bg-black btn border-none py-3 flex items-center gap-2 mx-auto mt-3 w-full'>
                     <FaGithub></FaGithub><span>Sign in with Github</span>
                     </button>
                 </div>

@@ -35,6 +35,10 @@ const signInWithGoogle = () => {
    return signInWithPopup(auth, googleProvider)
   };
  const githubProvider = new GithubAuthProvider() 
+ const signInWithGithub = () => {
+    setLoading(true)
+   return signInWithPopup(auth, githubProvider)
+  };
 
 useEffect(()=>{
  const unsubscribe = onAuthStateChanged(auth, loggedUser => {
@@ -52,7 +56,8 @@ useEffect(()=>{
          signIn,
          logout,
          signInWithGoogle,
-         loading
+         loading,
+         signInWithGithub
     }
 
     return (
