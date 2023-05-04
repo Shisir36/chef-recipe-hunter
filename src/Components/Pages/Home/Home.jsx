@@ -32,7 +32,7 @@ const Home = () => {
     </div>
   </div>
 </div>
-  <section className='mt-10 px-10'>
+  <section className='mt-10 md:px-10 px-2'>
   <p className="text-center mb-5 md:text-5xl lg:text-6xl text-3xl font-semibold bg-gradient-to-r from-gray-400 to-black via-gray-500 text-transparent bg-clip-text title ">Our All Chefs</p>
 
 <hr />
