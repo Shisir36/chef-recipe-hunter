@@ -48,7 +48,7 @@ const RecipesCard = ({recipe}) => {
       </div>
     </div>
   </div>
-  <button className='btn btn-outline btn-success rounded-sm' onClick={()=>{addToFavorites(food_id)}}  disabled={favorites.includes(food_id)} >Add To Favourite</button>
+ <button className='btn btn-outline  btn-success rounded-sm ' onClick={()=>{addToFavorites(food_id)}}  disabled={favorites.includes(food_id)} >Add To Favourite</button>
 </div>
 
     );

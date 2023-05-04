@@ -64,7 +64,7 @@ const {user, logout} = useContext(AuthContext)
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex-shrink-0">
               <h1 className="text-green-400 font-bold md:text-4xl lg:text-4xl text-2xl">
-               <Link to = "/"> The Chief's Pantry</Link>
+               <Link to = "/">Chief's Pantry</Link>
               </h1>
             </div>
             <div className="hidden sm:block sm:ml-6">

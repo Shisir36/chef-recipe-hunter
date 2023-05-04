@@ -9,9 +9,8 @@ const Login = () => {
     const location = useLocation()
     const navigate = useNavigate();
     const {signIn,signInWithGoogle} = useContext(AuthContext)
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const [rememberMe, setRememberMe] = useState(false);
+    const [error, setError] = useState(null);
     const from = location.state?.from?.pathname||"/";
     const handleSubmit = (event) => {
       event.preventDefault();
@@ -24,7 +23,7 @@ const Login = () => {
         navigate(from,{replace:true})
         form.reset()
       })
-      .catch(error => console.log(error))
+      .catch(error => setError("Invalid email or password"))
     };
 
     const handleSignInWithGoogle = () => {
@@ -55,6 +54,7 @@ const Login = () => {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-gradient-to-r from-green-200 to-purple-400 bg-opacity-25 py-12 px-4 sm:px-6 lg:px-8">
+        {error && <div className="text-red-500 mb-4">{error}</div>}
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label
@@ -70,7 +70,6 @@ const Login = () => {
                   type="email"
                   autoComplete="email"
                   required
-                  onChange={(e) => setEmail(e.target.value)}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
@@ -90,7 +89,6 @@ const Login = () => {
                   type="password"
                   autoComplete="current-password"
                   required
-                  onChange={(e) => setPassword(e.target.value)}
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
@@ -115,28 +113,28 @@ const Login = () => {
             <div>
               <button
                 type="submit"
-                className="w-full flex justify-center py-2 px-4 border border-transparent bg-indigo-600 rounded-md shadow-sm text-white font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+                className="w-full flex justify-center py-3 px-4 border border-transparent bg-indigo-600 rounded-md shadow-sm text-white font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
                 >
                 Sign in
                 </button>
                 <h2 className='text-center mt-5'>Sign in With</h2>
                 <div>
-                    <button onClick={handleSignInWithGoogle} className='bg-red-500 btn border-none flex hover:bg-red-600 items-center gap-2 mx-auto mt-3'>
+                    <button onClick={handleSignInWithGoogle} className='bg-red-500 btn border-none flex hover:bg-red-600 items-center py-3 gap-2 mx-auto mt-3 w-full'>
                     <FaGoogle></FaGoogle><span>Sign in with Google</span>
                     </button>
-                    <button className='bg-black btn border-none flex items-center gap-2 mx-auto mt-3'>
+                    <button className='bg-black btn border-none py-3 flex items-center gap-2 mx-auto mt-3 w-full'>
                     <FaGithub></FaGithub><span>Sign in with Github</span>
                     </button>
                 </div>
                 </div>
                 </form>
                 </div>
- </div>
- </div>
- <div className=' w-4/5'>
- <Lottie  animationData={login} height={600} width={300} loop = {true}></Lottie>   
-</div>
-    </div>
+               </div>
+               </div>
+               <div className=' w-4/5'>
+               <Lottie  animationData={login} height={600} width={300} loop = {true}></Lottie>   
+              </div>
+                  </div>
 
     );
 };
