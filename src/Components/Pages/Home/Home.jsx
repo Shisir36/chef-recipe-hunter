@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import bannerImg from "../../../assets/foodPic/lily-banse--YHSwy6uqvk-unsplash.jpg"
 import Marquee from "react-fast-marquee";
 import ChefDetails from '../chefDetails/chefDetails';
 import { FaBirthdayCake, FaUserTie, FaHeart, FaUsers } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Provider/AuthProvider';
+import { ColorRing } from 'react-loader-spinner'
 
 const Home = () => {
   const [chefsData, setChefData] = useState([])
+  const {  loading} = useContext(AuthContext)
   useEffect(()=>{
     fetch("https://chef-recipe-hunter-server-shisir36.vercel.app/chef")
     .then(res => res.json())
@@ -14,6 +17,21 @@ const Home = () => {
   },[])
     return (
   <div>
+      { loading &&
+      <div className='mx-auto text-center h-screen flex items-center justify-center'>
+      <div>
+       <ColorRing
+        visible={true}
+        height="150"
+        width="150"
+        ariaLabel="blocks-loading"
+        wrapperStyle={{}}
+        wrapperClass="blocks-wrapper"
+        colors={['#b8c480', '#B2A3B5', '#F4442E', '#51E5FF', '#429EA6']}
+      />
+      </div>
+        </div>
+    }
    <div className="hero h-96 " style={{ backgroundImage: `url(${bannerImg})` }}>
   <div className="hero-overlay bg-opacity-60"></div>
   <div className="hero-content text-center text-neutral-content">
