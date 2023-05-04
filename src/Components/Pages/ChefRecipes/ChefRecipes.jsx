@@ -8,7 +8,7 @@ const recipes = useLoaderData();
 const {id} = useParams()
 const [chefData, setChefData] = useState('');
 useEffect(()=>{
-    fetch(`http://localhost:5000/chef/${id}`)
+    fetch(`https://chef-recipe-hunter-server-shisir36.vercel.app/chef/${id}`)
     .then(res => res.json())
     .then(data =>setChefData(data))
 },[]) 
