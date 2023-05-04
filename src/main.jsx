@@ -6,7 +6,6 @@ import { router } from './Routes/Routes.jsx'
 import 'react-toastify/dist/ReactToastify.css';
 import AuthProvider from './Provider/AuthProvider'
 
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
  <AuthProvider>

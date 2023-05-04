@@ -3,6 +3,7 @@ import bannerImg from "../../../assets/foodPic/lily-banse--YHSwy6uqvk-unsplash.j
 import Marquee from "react-fast-marquee";
 import ChefDetails from '../chefDetails/chefDetails';
 import { FaBirthdayCake, FaUserTie, FaHeart, FaUsers } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   const [chefsData, setChefData] = useState([])
@@ -25,7 +26,9 @@ const Home = () => {
      <div className=' md:w-4/6 mx-auto'>
       <p className="mb-5">We provide the best culinary services in town. Our world-class chefs use only the freshest ingredients to create delicious and healthy meals that cater to all tastes and preferences.</p>
       </div>
-      <button className=" bg-green-600 hover:bg-indigo-700 btn border-0">Get Started</button>
+      <button className=" bg-green-600 hover:bg-indigo-700 btn border-0"> 
+      <Link to= "/register">Get Started</Link>
+      </button>
     </div>
   </div>
 </div>

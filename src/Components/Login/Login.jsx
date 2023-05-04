@@ -9,7 +9,6 @@ const Login = () => {
     const location = useLocation()
     const navigate = useNavigate();
     const {signIn,signInWithGoogle, signInWithGithub} = useContext(AuthContext)
-    const [rememberMe, setRememberMe] = useState(false);
     const [error, setError] = useState(null);
     const from = location.state?.from?.pathname||"/";
     const handleSubmit = (event) => {
@@ -109,7 +108,6 @@ const Login = () => {
                 id="remember_me"
                 name="remember_me"
                 type="checkbox"
-                onChange={(e) => setRememberMe(e.target.checked)}
                 className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
               />
               <label

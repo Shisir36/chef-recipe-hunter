@@ -5,10 +5,8 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 
 const Register = () => {
-    const {user,createUser,updateUserProfile} = useContext(AuthContext)
-    console.log(createUser);
+    const {createUser,updateUserProfile} = useContext(AuthContext)
   const [password, PasswordError] = useState('');
-  const [Error, setError] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -22,12 +20,7 @@ const Register = () => {
             return;
             
           }
-          PasswordError('')
-        
-          if (!email || !password) {
-            setError('Please provide your email and password');
-            return;
-          }
+          PasswordError('') 
         createUser(email,password)
         .then(result => {
             const loggedUser = result.user;
@@ -35,7 +28,7 @@ const Register = () => {
             updateUserProfile(name, photoURL)
             form.reset()
         })
-        .catch(error => setError(error))
+        .catch(error => console.log(error))
       };      
   return (
 <div className="hero-overlay bg-opacity-60 h-full w-full bg-cover" style={{ backgroundImage: `url(${Photo})` }}>
@@ -60,7 +53,6 @@ const Register = () => {
           <label className="block mb-2 font-bold text-gray-800" htmlFor="photoURL">Photo URL</label>
           <input className="w-full px-3 py-2 text-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-700" type="url" id="photoURL" v-model="photoURL"/>
         </div>
-        {Error && <p className="mb-4 text-red-600">{Error}</p>}
         <div className="flex justify-end">
           <button className="px-4 py-4 w-full text-white bg-green-600 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-700" type="submit">Sign Up</button>
         </div>

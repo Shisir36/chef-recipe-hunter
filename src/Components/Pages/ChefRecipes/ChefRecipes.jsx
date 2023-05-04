@@ -21,20 +21,20 @@ return (
         <img className="rounded-full md:h-80 md:w-80 w-64 h-64 border-4 border-white shadow-lg" src={chefData.chef_picture} alt="Chef image" />
       </div>
       <div className="md:w-3/4 md:pl-10 md:text-left text-center">
-        <h1 className="text-5xl font-bold mb-5 text-green-500 title">{chefData.chef_name}</h1>
-        <p className="text-2xl text-gray-700 font-bold mb-6">{chefData.chef_bio}</p>
+        <h1 className="md:text-5xl text-4xl font-bold mb-5 text-green-500 title">{chefData.chef_name}</h1>
+        <p className="md:text-2xl text-xl text-gray-700 font-bold mb-6">{chefData.chef_bio}</p>
         <div className="flex flex-wrap justify-between items-center mb-6">
           <div className="w-full sm:w-1/2 md:w-1/3 mb-4 md:mb-0">
-            <p className="text-3xl text-green-500 title font-bold">Experience</p>
-            <p className="text-2xl text-gray-700 font-semibold">{chefData.years_of_experience} Years</p>
+            <p className="md:text-3xl text-2xl text-green-500 title font-bold">Experience</p>
+            <p className="md:text-2xl text-xl text-gray-700 font-semibold">{chefData.years_of_experience} Years</p>
           </div>
           <div className="w-full sm:w-1/2 md:w-1/3 mb-4 md:mb-0">
-            <p className="text-3xl text-green-500 title font-bold">Likes</p>
-            <p className="text-2xl text-gray-700 font-semibold inline-flex items-center gap-1">{chefData.likes}<span><FaHeart className='text-red-600 text-center'></FaHeart></span></p>
+            <p className="md:text-3xl text-2xl text-green-500 title font-bold">Likes</p>
+            <p className="md:text-2xl text-xl text-gray-700 font-semibold inline-flex items-center gap-1">{chefData.likes}<span><FaHeart className='text-red-600 text-center'></FaHeart></span></p>
           </div>
           <div className="w-full sm:w-1/2 md:w-1/3 mb-4 md:mb-0">
-            <p className="text-3xl text-green-500 title font-bold">Recipes</p>
-            <p className="text-2xl text-gray-700 font-semibold">{chefData.number_of_recipes}<span><FaCuttlefish className='text-red-600 text-center'></FaCuttlefish> </span></p>
+            <p className="md:text-3xl text-2xl text-green-500 title font-bold">Recipes</p>
+            <p className="md:text-2xl text-xl text-gray-700 font-semibold inline-flex items-center">{chefData.number_of_recipes}<span><FaCuttlefish className='text-red-600 text-center'></FaCuttlefish> </span></p>
           </div>
         </div>
       </div>
@@ -43,7 +43,7 @@ return (
 </div>
 
     <div>
-        <h2 className='title text-5xl text-center py-9'>Recipe Details</h2>
+        <h2 className='title md:text-5xl text-3xl text-center py-9'>Recipe Details <hr className=' border md:w-6/12 w-11/12 text-center mx-auto mt-6' /></h2>
       <div className='grid md:grid-cols-3 gap-5'>
         {
             recipes.map( recipe => <RecipesCard key={recipe.id} recipe = {recipe}></RecipesCard> )

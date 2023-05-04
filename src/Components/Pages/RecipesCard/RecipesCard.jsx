@@ -16,6 +16,7 @@ const RecipesCard = ({recipe}) => {
     }
   };
     return (
+
 <div className="card md:w-96 rounded-sm w-full bg-base-100 shadow-md mx-auto mb-8">
     <ToastContainer/>
   <figure>
