@@ -120,7 +120,7 @@ Our chefs offer you perfect Japanese cuisine, with expertly crafted dishes made 
 </div>
 
 <section className='mb-10'>
-  <h1 className='text-center mb-5 md:text-5xl lg:text-6xl text-3xl font-semibold bg-gradient-to-r from-gray-400 to-black via-gray-500 text-transparent bg-clip-text title'>Our Special Foods<hr className=' border md:w-6/12 w-11/12 text-center mx-auto mt-6' /></h1>
+  <h1 className='text-center mb-10 md:text-5xl lg:text-6xl text-3xl font-semibold bg-gradient-to-r from-gray-400 to-black via-gray-500 text-transparent bg-clip-text title'>Our Special Foods<hr className=' border md:w-6/12 w-11/12 text-center mx-auto mt-6' /></h1>
 <Marquee 
  speed={120}
  >
@@ -134,7 +134,7 @@ Our chefs offer you perfect Japanese cuisine, with expertly crafted dishes made 
           <img
             src={image.src}
             alt={image.name}
-            className="object-cover w-48 h-48 rounded-md"
+            className="object-cover md:w-60 md:h-60 lg:w-64 lg:h-64 w-48 h-48 rounded-md"
           />
           <div
             className={`absolute inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out ${
