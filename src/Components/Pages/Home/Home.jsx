@@ -134,7 +134,7 @@ Our chefs offer you perfect Japanese cuisine, with expertly crafted dishes made 
           <img
             src={image.src}
             alt={image.name}
-            className="object-cover md:w-60 md:h-60 lg:w-64 lg:h-64 w-48 h-48 rounded-md"
+            className="object-cover md:w-60 md:h-60 lg:w-64 lg:h-64 w-52 h-52 rounded-md"
           />
           <div
             className={`absolute inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out ${

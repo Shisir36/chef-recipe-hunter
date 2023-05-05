@@ -106,18 +106,20 @@ const {user, logout} = useContext(AuthContext)
       ) : (
         <div className="hidden sm:block sm:ml-6">
           <div className="flex space-x-4">
-            <Link
-              to="/login"
-              className="text-white px-3 py-2 rounded-md hover:bg-gray-700"
+            <NavLink
+            to="/login"
+               activeClassName="bg-gray-900 text-white"
+               className={({isActive})=> isActive ? "text-green-600 px-3 py-2 rounded-md "  : 'text-white px-3 py-2 rounded-md hover:bg-gray-700 '}
             >
               Login
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to="/register"
-              className="text-white px-3 py-2 rounded-md hover:bg-gray-700"
+              activeClassName="bg-gray-900 text-white"
+              className={({isActive})=> isActive ? "text-green-600 px-3 py-2 rounded-md "  : 'text-white px-3 py-2 rounded-md hover:bg-gray-700 '}
             >
               Register
-            </Link>
+            </NavLink>
           </div>
         </div>
       )}

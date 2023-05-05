@@ -33,7 +33,7 @@ const Register = () => {
   return (
 <div className="hero-overlay bg-opacity-60 h-full w-full bg-cover" style={{ backgroundImage: `url(${Photo})` }}>
   <div className="flex items-center justify-center min-h-screen">
-    <div className="w-full max-w-md px-6 py-11 bg-white rounded-md shadow-md" style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)' }}>
+    <div className="md:w-full w-11/12 max-w-md px-6 py-11 bg-white rounded-md shadow-md" style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)' }}>
       <h2 className="mb-6 text-2xl font-bold text-center text-gray-900 title">Create Account</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">

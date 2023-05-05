@@ -4,7 +4,7 @@ import LazyLoad from 'react-lazy-load';
 import { Link } from 'react-router-dom';
 
 const ChefDetails = ({chefData}) => {
-  const {chef_picture,chef_name, years_of_experience,number_of_recipes,likes,chef_bio} = chefData
+  const {chef_picture,chef_name, years_of_experience,number_of_recipes,likes,} = chefData
     return (
 <div className=" bg-white rounded shadow-md overflow-hidden md:max-w-2xl mt-10">
   <div className="md:flex justify-between w-full gap-10">
@@ -14,7 +14,7 @@ const ChefDetails = ({chefData}) => {
       </LazyLoad>
     </div>
     <div className="md:px-10 px-4 py-5 md:ml-9">
-      <div className="uppercase tracking-wide text-2xl text-green-400 title">{chef_name}</div>
+      <div className="uppercase tracking-wide text-2xl text-green-500 title">{chef_name}</div>
       <p className="mt-2 text-gray-500">Years of Experience: <span className=' font-bold'> {years_of_experience}</span></p>
       <p className="mt-2 text-gray-500">Recipes:<span className=' font-bold'> {number_of_recipes}</span></p>
       <p className="mt-2 text-gray-500 inline-flex items-center"><FaHeart className='text-red-600' /><span className=' font-bold'>  {likes}</span></p>
