@@ -8,6 +8,25 @@ import { AuthContext } from '../../../Provider/AuthProvider';
 import { ColorRing } from 'react-loader-spinner'
 
 const Home = () => {
+
+// Our Special Foods section information
+
+const [hoveredFood, setHoveredFood] = useState('');
+const images = [
+  { name: 'Ramen', src: 'https://images.unsplash.com/photo-1623341214825-9f4f963727da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80' },
+  { name: 'Natto', src: 'https://images.unsplash.com/photo-1569239602012-e2b4575d1d40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80' },
+  { name: 'Sushi', src: 'https://images.unsplash.com/photo-1611143669185-af224c5e3252?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80' },
+  { name: 'Tacos', src: 'https://images.unsplash.com/photo-1564767655658-4e6b365884ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80' },
+  { name: 'Tamagoyaki', src: 'https://images.unsplash.com/photo-1606501129419-38058bd81ddc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80' },
+  { name: 'Sukiyaki', src: 'https://images.unsplash.com/photo-1669530538946-8f594e0d6e46?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80' },
+  { name: 'Tonkatsu', src: 'https://images.unsplash.com/photo-1611077855004-cc0614011bd8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80' },
+];
+
+const handleImageHover = (name) => {
+  setHoveredFood(name);
+};
+
+
   const [chefsData, setChefData] = useState([])
   const {  loading} = useContext(AuthContext)
   useEffect(()=>{
@@ -38,7 +57,7 @@ const Home = () => {
     <div>
      <div className=' md:w-7/12 mx-auto'> 
       <Marquee>
-      <h1 className="mb-5 md:text-5xl lg:text-6xl text-3xl font-bold bg-gradient-to-r from-green-400 to-orange-500 via-yellow-500 text-transparent bg-clip-text title ">Welcome to our website</h1>
+      <h1 className="mb-5 md:text-5xl lg:text-6xl text-4xl font-bold bg-gradient-to-r from-green-400 to-orange-500 via-yellow-500 text-transparent bg-clip-text title ">Welcome to our website</h1>
       </Marquee>
       </div>
      <div className=' md:w-4/6 mx-auto'>
@@ -100,6 +119,40 @@ Our chefs offer you perfect Japanese cuisine, with expertly crafted dishes made 
   </div>
 </div>
 
+<section className='mb-10'>
+  <h1 className='text-center mb-5 md:text-5xl lg:text-6xl text-3xl font-semibold bg-gradient-to-r from-gray-400 to-black via-gray-500 text-transparent bg-clip-text title'>Our Special Foods<hr className=' border md:w-6/12 w-11/12 text-center mx-auto mt-6' /></h1>
+<Marquee 
+ speed={120}
+ >
+      {images.map((image, index) => (
+        <div
+          key={index}
+          className="relative flex-shrink-0 mr-4 cursor-pointer"
+          onMouseEnter={() => handleImageHover(image.name)}
+          onMouseLeave={() => handleImageHover('')}
+        >
+          <img
+            src={image.src}
+            alt={image.name}
+            className="object-cover w-48 h-48 rounded-md"
+          />
+          <div
+            className={`absolute inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ease-in-out ${
+              hoveredFood === image.name ? 'opacity-75' : 'opacity-0'
+            }`}
+          />
+          <p
+            className={`${
+              hoveredFood === image.name ? 'visible' : 'invisible'
+            } absolute bottom-0 w-full text-white font-bold text-center bg-black bg-opacity-50 rounded-lg`}
+          >
+            {image.name}
+          </p>
+        </div>
+      ))}
+    </Marquee>
+</section>
+
 </section>
 
 
@@ -108,3 +161,4 @@ Our chefs offer you perfect Japanese cuisine, with expertly crafted dishes made 
 };
 
 export default Home;
+

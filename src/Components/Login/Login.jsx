@@ -48,7 +48,10 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-r from-indigo-400 to-purple-400 flex flex-col justify-center py-12 sm:px-6 lg:px-8 md:grid grid-cols-2 px-3 gap-3 items-center">
-  <div>
+          <div className='order-last sm:order-first w-4/5'>
+               <Lottie  animationData={login} height={600} width={300} loop = {true}></Lottie>   
+              </div>
+           <div>
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
           Sign in to your account
@@ -61,8 +64,8 @@ const Login = () => {
         </p>
       </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-gradient-to-r from-green-200 to-purple-400 bg-opacity-25 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md shadow-sm">
+        <div className=" rounded-sm bg-gradient-to-r from-green-200 to-purple-400 bg-opacity-25 py-12 px-4 sm:px-6 lg:px-8">
         {error && <div className="text-red-500 mb-4">{error}</div>}
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
@@ -139,9 +142,6 @@ const Login = () => {
                 </div>
                </div>
                </div>
-               <div className=' w-4/5'>
-               <Lottie  animationData={login} height={600} width={300} loop = {true}></Lottie>   
-              </div>
                   </div>
 
     );
